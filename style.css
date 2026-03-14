@@ -1,0 +1,18 @@
+body {
+    background-color: #1a1a1a; /* 배경색을 어두운 회색으로 설정하여 눈의 피로를 줄입니다. */
+    color: #ffffff;           /* 기본 글자색을 흰색으로 설정합니다. */
+    font-family: 'Malgun Gothic', sans-serif; /* 폰트를 가독성 좋은 맑은 고딕으로 지정합니다. */
+}
+
+#game-container {
+    width: 400px;             /* 게임 창의 가로 너비를 400픽셀로 고정합니다. */
+    margin: 50px auto;        /* 화면 중앙에 배치합니다. */
+    padding: 20px;            /* 내부 여백을 20픽셀 부여합니다. */
+    border: 2px solid #ffd700; /* 금색 테두리를 둘러 게임 UI 느낌을 줍니다. */
+}
+
+#log-window {
+    height: 150px;            /* 로그 창의 높이를 설정합니다. */
+    overflow-y: scroll;       /* 내용이 많아지면 스크롤이 생기도록 설정합니다. */
+    background: #000;         /* 로그 창 배경을 검정색으로 만듭니다. */
+}

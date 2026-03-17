@@ -17,3 +17,25 @@ document.getElementById("p-name").innerText = characterName;
 
 console.log("게임 준비 완료: " + characterName);
 // console.log: 브라우저 개발자 도구(F12)의 콘솔 창에 메시지를 출력하여 버그를 찾거나 확인하는 도구입니다.
+
+const player = {
+  hp: 100, 
+  maxHp: 100, 
+  atk: 15
+};
+// 플레이어 객체
+
+const monsters = [
+  {name: "슬라임", hp: 30, atk: 20},
+  {name: "고블린", hp: 120, atk: 12},
+  {name: "드래곤", hp: 180, atk: 20}
+  ]
+// 몬스터 3마리를 배열로 선언
+
+let currentFloor = 1;
+// 현재 몇 층인지 추적하는 던전 상태 변수
+
+console.log("체력: ", + player.hp)
+console.log("최대 체력: ", + player.maxHp)
+console.log("공격력: ", + player.atk)
+console.log("1층 몬스터: " + monsters[currentFloor - 1].name)

@@ -9,12 +9,23 @@
     <div id="game-container">
         <h1>⚔️ RPG World (가칭)</h1>
         <div id="status-window">
-            <p>캐릭터 이름: <span id="p-name">준비 중...</span></p>
+            <div class="status-row">
+                <p>캐릭터 이름: <span id="p-name">준비 중...</span></p>
+                <p>현재층: <span id="p-floor">1층</span></p>
+            </div>
+            <div class="status-row">
+                <p>HP: <span id="p-hp">100</span>/<span id="p-maxHp">100</span></p>
+                <p>공격력: <span id="p-atk">15</span></p>
+            </div>
             <p>현재 상태: <span id="p-status">모험 대기 중</span></p>
         </div>
         <hr>
         <div id="log-window">
-            <p>시스템: 게임이 시작되었습니다. 캐릭터를 생성하세요!</p>
+            <p>시스템: 게임이 시작되었습니다. 던전에 입장하려면 Enter를 누르세요.</p>
+        </div>
+        <hr>
+        <div>
+            <p><span id="action-guide">[공격: a] [회피: d]</span></p>
         </div>
     </div>
     <script src="main.js"></script>

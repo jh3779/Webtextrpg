@@ -1,6 +1,6 @@
 let characterName = "신입 궁수"; 
 
-const initialLevel = 1;
+let initialLevel = 1;
 
 const player = {
   hp: 100, 
@@ -19,6 +19,8 @@ const monsters = [
 let currentFloor = 1;
 const maxFloor = 3;
 // 현재 몇 층인지 추적하는 던전 상태 변수
+
+addLog("시스템: 게임이 시작되었습니다. 던전에 입장하려면 Enter를 누르세요.")
 
 function playerAttack(monster) { 
   monster.hp -= player.atk;
@@ -267,7 +269,38 @@ function enterNextFloor() {
   updateStatus();
 }
 
-// 키보드 이벤트 연결
+function saveGame(){
+  const logWindow = {message: document.getElementById("log-window").innerText}
+  localStorage.setItem(
+  "saveData", JSON.stringify({initialLevel, player,
+  monsters, currentFloor, gameActive,
+  gameState, dodgeCooldown, logWindow}))
+  addLog("저장되었습니다.")
+}
+
+function loadGame(){
+  const logWindow = document.getElementById("log-window");
+  while (logWindow.firstChild) {
+    logWindow.removeChild(logWindow.firstChild);
+  } // 로그창 초기화
+
+  const loadData = JSON.parse(localStorage.getItem("saveData"))
+
+  initialLevel = loadData.initialLevel
+  player.hp = loadData.player.hp
+  player.atk = loadData.player.atk
+  player.maxHp = loadData.player.maxHp
+  monsters[0].hp = loadData.monsters[0].hp
+  monsters[1].hp = loadData.monsters[1].hp
+  monsters[2].hp = loadData.monsters[2].hp
+  currentFloor = loadData.currentFloor
+  gameActive = loadData.gameActive
+  gameState = loadData.gameState
+  dodgeCooldown = loadData.dodgeCooldown
+  addLog(loadData.logWindow.message, "log-load")
+  updateStatus()
+}
+
 document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
     startDungeon();
@@ -279,4 +312,12 @@ document.addEventListener("keydown", function(event) {
   if (event.key === "d") {
     handleDodge();
   }
+  if (event.key === "s") {
+    saveGame();
+  }
+  if (event.key === "l") {
+    loadGame();
+  }
 });
+// 키보드 이벤트 연결
+
